@@ -1,0 +1,24 @@
+manor-of-shadow/
+│
+├── app.py
+├── requirements.txt
+├── static/
+│   ├── css/
+│   │   ├── style.css
+│   │   └── puzzles.css
+│   ├── js/
+│   │   └── game.js
+│   └── images/
+│       ├── background.jpg
+│       ├── library.jpg
+│       ├── study.jpg
+│       ├── cellar.jpg
+│       └── final-room.jpg
+└── templates/
+    ├── base.html
+    ├── index.html
+    ├── room1.html
+    ├── room2.html
+    ├── room3.html
+    ├── final.html
+    └── success.html
