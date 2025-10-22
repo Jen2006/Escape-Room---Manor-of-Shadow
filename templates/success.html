@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="success-screen">
+    <div class="celebration">
+        <h2>🎉 Congratulations! 🎉</h2>
+        <p>You have successfully escaped the Manor of Shadow!</p>
+        
+        <div class="escape-stats">
+            <h3>Your Escape Time:</h3>
+            <div class="time-result">{{ escape_time }}</div>
+        </div>
+        
+        <div class="achievement">
+            <p>You've proven yourself a master of puzzles and a conqueror of shadows!</p>
+        </div>
+        
+        <div class="play-again">
+            <a href="{{ url_for('index') }}" class="btn-primary">Play Again</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Stop the timer on the success page
+    document.addEventListener('DOMContentLoaded', function() {
+        const timerElement = document.getElementById('timer');
+        if (timerElement) {
+            timerElement.style.display = 'none';
+        }
+    });
+</script>
+{% endblock %}

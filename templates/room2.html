@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="room study">
+    <div class="room-description">
+        <h2>The Dark Study</h2>
+        <p>A mysterious study filled with astronomical instruments and ancient star charts. Five portraits of Roman gods watch over the room.</p>
+        <p>The next door requires a word combination. The paintings hold celestial secrets...</p>
+    </div>
+    
+    <div class="puzzle-area">
+        <div class="paintings-grid">
+            <div class="painting" data-god="MARS" data-position="2">♂ Mars - God of War</div>
+            <div class="painting" data-god="VENUS" data-position="5">♀ Venus - Goddess of Love</div>
+            <div class="painting" data-god="JUPITER" data-position="1">♃ Jupiter - King of Gods</div>
+            <div class="painting" data-god="MERCURY" data-position="3">☿ Mercury - Messenger</div>
+            <div class="painting" data-god="SATURN" data-position="4">♄ Saturn - God of Time</div>
+        </div>
+        
+        <div class="clue-text">
+            <p><strong>Ancient Text Found:</strong><br>
+            "Order them not by name or might,<br>
+            But by their distance from the light.<br>
+            The evening star, both bright and fair,<br>
+            Shall be the password to proceed from there."
+            </p>
+        </div>
+    </div>
+    
+    <div class="puzzle-interface">
+        <form method="POST">
+            <input type="text" name="password" placeholder="Enter the god's name" required>
+            <button type="submit" class="btn-primary">Unlock Cellar Door</button>
+        </form>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+    </div>
+    
+    <div class="hint">
+        <p><strong>Hint:</strong> Research which planet is known as the "evening star" in Roman mythology.</p>
+    </div>
+</div>
+{% endblock %}

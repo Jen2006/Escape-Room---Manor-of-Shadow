@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="room library">
+    <div class="room-description">
+        <h2>The Ancient Library</h2>
+        <p>Dusty books line the walls from floor to ceiling. A single reading desk sits in the center of the room with four special books placed upon it.</p>
+        <p>The door to the next room is locked with a numerical code. The books seem to hold the key...</p>
+    </div>
+    
+    <div class="puzzle-area">
+        <div class="books-clue">
+            <div class="book" data-year="1776">Revolutionary Times</div>
+            <div class="book" data-year="1892">Gothic Tales</div>
+            <div class="book" data-year="1945">New Beginnings</div>
+            <div class="book" data-year="1969">Lunar Dreams</div>
+        </div>
+        
+        <div class="riddle">
+            <p><strong>Riddle:</strong><br>
+            "Four centuries of knowledge rest,<br>
+            But one year stands above the rest.<br>
+            When shadows first began to form,<br>
+            And Gothic tales weathered the storm."
+            </p>
+        </div>
+    </div>
+    
+    <div class="puzzle-interface">
+        <form method="POST">
+            <input type="text" name="password" placeholder="Enter 4-digit code" maxlength="4" required>
+            <button type="submit" class="btn-primary">Unlock Study Door</button>
+        </form>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+    </div>
+    
+    <div class="hint">
+        <p><strong>Hint:</strong> Look for the book that mentions "Gothic tales" and check its publication year.</p>
+    </div>
+</div>
+{% endblock %}

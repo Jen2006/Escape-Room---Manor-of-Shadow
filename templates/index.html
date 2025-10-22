@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="room entrance">
+    <div class="room-description">
+        <h2>The Entrance Hall</h2>
+        <p>You find yourself in the grand entrance hall of the Manor of Shadow. The heavy oak door behind you has locked itself, and the only way out is forward.</p>
+        <p>Dark portraits line the walls, their eyes seeming to follow your every move. A cold draft whispers through the corridor ahead.</p>
+        <p>Are you ready to begin your escape?</p>
+    </div>
+    
+    <div class="puzzle-interface">
+        <form action="{{ url_for('room1') }}" method="get">
+            <button type="submit" class="btn-primary">Enter the Library</button>
+        </form>
+    </div>
+    
+    <div class="clues">
+        <h3>How to Play:</h3>
+        <ul>
+            <li>Solve puzzles in each room to progress</li>
+            <li>Look carefully for hidden clues</li>
+            <li>Combine information from different rooms</li>
+            <li>Your time starts when you begin!</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

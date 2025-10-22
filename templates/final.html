@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="room final-room">
+    <div class="room-description">
+        <h2>The Master Chamber</h2>
+        <p>You've reached the final chamber! A massive door stands before you, locked with a complex mechanism that requires a master password.</p>
+        <p>Combine all the knowledge you've gained from previous rooms to form the final escape code.</p>
+    </div>
+    
+    <div class="puzzle-area">
+        <div class="final-clues">
+            <div class="clue-box">
+                <h4>From the Library:</h4>
+                <p>The year of Gothic tales: <strong>1892</strong></p>
+            </div>
+            
+            <div class="clue-box">
+                <h4>From the Study:</h4>
+                <p>The evening star goddess: <strong>VENUS</strong></p>
+            </div>
+            
+            <div class="clue-box">
+                <h4>From the Cellar:</h4>
+                <p>The candle sequence: <strong>4321</strong></p>
+            </div>
+            
+            <div class="clue-box">
+                <h4>Final Riddle:</h4>
+                <p>"Take the first from the star so bright,<br>
+                And the last from the candle's light.<br>
+                Combine with the word that made you see,<br>
+                To finally from this manor be free."</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="puzzle-interface">
+        <form method="POST">
+            <input type="text" name="password" placeholder="Enter master password" required>
+            <button type="submit" class="btn-primary">Escape the Manor!</button>
+        </form>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+    </div>
+    
+    <div class="hint">
+        <p><strong>Final Hint:</strong> Take letters from VENUS and combine with "SHADOW" - but which letters exactly?</p>
+    </div>
+</div>
+{% endblock %}

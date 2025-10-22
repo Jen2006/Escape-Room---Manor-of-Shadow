@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Manor of Shadow{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/puzzles.css') }}">
+</head>
+<body class="{% if 'room1' in request.url_rule.rule %}library{% elif 'room2' in request.url_rule.rule %}study{% elif 'room3' in request.url_rule.rule %}cellar{% elif 'final' in request.url_rule.rule %}final-room{% else %}entrance{% endif %}">
+    <div class="container">
+        <header>
+            <h1>Manor of Shadow</h1>
+            <div class="timer" id="timer">Time: 00:00:00</div>
+        </header>
+        
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        
+        <footer>
+            <p>Let me test your intelligebce and desire to escape this room</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>

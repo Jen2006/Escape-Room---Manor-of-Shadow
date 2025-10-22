@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="room cellar">
+    <div class="room-description">
+        <h2>The Forgotten Cellar</h2>
+        <p>A cold, damp cellar with four ancient candelabras. Each holds candles of different heights, slowly burning down.</p>
+        <p>The final door requires a sequence based on the candle patterns. Time is of the essence!</p>
+    </div>
+    
+    <div class="puzzle-area">
+        <div class="candles-container">
+            <div class="candelabra">
+                <h4>Candelabra 1</h4>
+                <div class="candles">
+                    <div class="candle tall"></div>
+                    <div class="candle short"></div>
+                    <div class="candle medium"></div>
+                </div>
+                <div class="candle-order">Order: Tall, Short, Medium</div>
+            </div>
+            
+            <div class="candelabra">
+                <h4>Candelabra 2</h4>
+                <div class="candles">
+                    <div class="candle short"></div>
+                    <div class="candle medium"></div>
+                    <div class="candle tall"></div>
+                </div>
+                <div class="candle-order">Order: Short, Medium, Tall</div>
+            </div>
+            
+            <div class="candelabra">
+                <h4>Candelabra 3</h4>
+                <div class="candles">
+                    <div class="candle medium"></div>
+                    <div class="candle tall"></div>
+                    <div class="candle short"></div>
+                </div>
+                <div class="candle-order">Order: Medium, Tall, Short</div>
+            </div>
+            
+            <div class="candelabra">
+                <h4>Candelabra 4</h4>
+                <div class="candles">
+                    <div class="candle tall"></div>
+                    <div class="candle medium"></div>
+                    <div class="candle short"></div>
+                </div>
+                <div class="candle-order">Order: Tall, Medium, Short</div>
+            </div>
+        </div>
+        
+        <div class="sequence-clue">
+            <p><strong>Note on the Wall:</strong><br>
+            "Count the patterns from first to last,<br>
+            How many times does tall precede the cast?<br>
+            The sequence of numbers you must find,<br>
+            To leave these shadows far behind."
+            </p>
+        </div>
+    </div>
+    
+    <div class="puzzle-interface">
+        <form method="POST">
+            <input type="text" name="password" placeholder="Enter 4-digit sequence" maxlength="4" required>
+            <button type="submit" class="btn-primary">Unlock Final Door</button>
+        </form>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+    </div>
+    
+    <div class="hint">
+        <p><strong>Hint:</strong> Count how many candles of each height type appear in each position across all four candelabras.</p>
+    </div>
+</div>
+{% endblock %}
