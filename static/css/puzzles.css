@@ -1,0 +1,165 @@
+/* Room-specific puzzle styles */
+
+/* Library - Books */
+.books-clue {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.book {
+    background: linear-gradient(135deg, #8b4513, #a0522d);
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #654321;
+}
+
+.book:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.riddle {
+    background: rgba(139, 0, 0, 0.3);
+    padding: 1.5rem;
+    border-radius: 8px;
+    font-style: italic;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+/* Study - Paintings */
+.paintings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.painting {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid #7f8c8d;
+    transition: all 0.3s ease;
+}
+
+.painting:hover {
+    border-color: #f39c12;
+    transform: scale(1.05);
+}
+
+.clue-text {
+    background: rgba(52, 152, 219, 0.2);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+    margin: 1rem 0;
+}
+
+/* Cellar - Candles */
+.candles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.candelabra {
+    background: rgba(140, 140, 140, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #666;
+}
+
+.candelabra h4 {
+    color: #ffd700;
+    margin-bottom: 1rem;
+}
+
+.candles {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.candle {
+    width: 20px;
+    border-radius: 3px 3px 0 0;
+}
+
+.candle.tall {
+    height: 40px;
+    background: linear-gradient(to bottom, #8b0000, #ff0000);
+}
+
+.candle.medium {
+    height: 30px;
+    background: linear-gradient(to bottom, #8b0000, #ff0000);
+}
+
+.candle.short {
+    height: 20px;
+    background: linear-gradient(to bottom, #8b0000, #ff0000);
+}
+
+.candle-order {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-top: 0.5rem;
+}
+
+.sequence-clue {
+    background: rgba(46, 204, 113, 0.2);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #2ecc71;
+    margin: 1rem 0;
+}
+
+/* Final Room */
+.final-clues {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.clue-box {
+    background: rgba(155, 89, 182, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #9b59b6;
+}
+
+.clue-box h4 {
+    color: #9b59b6;
+    margin-bottom: 0.5rem;
+}
+
+/* Success Screen */
+.escape-stats {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 10px;
+    border: 2px solid #ffd700;
+}
+
+.achievement {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: rgba(139, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.play-again {
+    margin-top: 2rem;
+}

@@ -1,0 +1,358 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    color: #e0e0e0;
+    height: 100vh;
+    line-height: 1.4;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background with lighter overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -2;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+/* Room-specific backgrounds */
+body.entrance::before { 
+    background: url('/static/images/background.png') center/cover no-repeat;
+}
+body.library::before { 
+    background: url('/static/images/library.png') center/cover no-repeat;
+}
+body.study::before { 
+    background: url('/static/images/study.png') center/cover no-repeat;
+}
+body.cellar::before { 
+    background: url('/static/images/cellar.png') center/cover no-repeat;
+}
+body.final-room::before { 
+    background: url('/static/images/final-room.png') center/cover no-repeat;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    border: 1px solid #444;
+    backdrop-filter: blur(5px);
+    flex-shrink: 0;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #8b0000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 0.3rem;
+}
+
+.timer {
+    font-size: 1rem;
+    color: #ffd700;
+    font-weight: bold;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.room {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid #444;
+    box-shadow: 0 0 30px rgba(139, 0, 0, 0.4);
+    max-width: 800px;
+    width: 100%;
+    backdrop-filter: blur(3px);
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+/* Custom scrollbar for room content */
+.room::-webkit-scrollbar {
+    width: 6px;
+}
+
+.room::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
+
+.room::-webkit-scrollbar-thumb {
+    background: #8b0000;
+    border-radius: 3px;
+}
+
+.room-description {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.room-description h2 {
+    color: #8b0000;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 2px black;
+}
+
+.room-description p {
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+.puzzle-area {
+    margin: 1rem 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.puzzle-interface {
+    text-align: center;
+    margin: 1rem 0;
+    flex-shrink: 0;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #444;
+    border-radius: 5px;
+    background: rgba(42, 42, 42, 0.8);
+    color: #e0e0e0;
+    margin-right: 10px;
+    width: 180px;
+    backdrop-filter: blur(2px);
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #8b0000;
+    background: rgba(42, 42, 42, 0.9);
+}
+
+.btn-primary {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: linear-gradient(45deg, rgba(139, 0, 0, 0.9), rgba(165, 42, 42, 0.9));
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, rgba(165, 42, 42, 0.9), rgba(139, 0, 0, 0.9));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.error {
+    color: #ff6b6b;
+    margin-top: 0.8rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black;
+    font-size: 0.9rem;
+}
+
+.clues, .hint {
+    background: rgba(139, 0, 0, 0.2);
+    padding: 0.8rem;
+    border-radius: 8px;
+    border-left: 4px solid #8b0000;
+    margin-top: 0.8rem;
+    backdrop-filter: blur(2px);
+    font-size: 0.9rem;
+}
+
+.clues h3, .hint p strong {
+    color: #ffd700;
+    font-size: 0.9rem;
+}
+
+.success-screen {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid #ffd700;
+    backdrop-filter: blur(5px);
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.celebration h2 {
+    font-size: 1.8rem;
+    color: #ffd700;
+    margin-bottom: 0.8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.time-result {
+    font-size: 1.5rem;
+    color: #8b0000;
+    font-weight: bold;
+    margin: 0.8rem 0;
+    text-shadow: 1px 1px 2px black;
+}
+
+footer {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    color: #888;
+    border-top: 1px solid #444;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    flex-shrink: 0;
+    font-size: 0.8rem;
+}
+
+/* Compact layouts for puzzle elements */
+.books-clue {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.book {
+    background: linear-gradient(135deg, #8b4513, #a0522d);
+    padding: 0.8rem;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #654321;
+    font-size: 0.8rem;
+}
+
+.paintings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.painting {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid #7f8c8d;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.candles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.candelabra {
+    background: rgba(140, 140, 140, 0.2);
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #666;
+    font-size: 0.8rem;
+}
+
+.final-clues {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.8rem;
+    margin: 1rem 0;
+}
+
+.clue-box {
+    background: rgba(155, 89, 182, 0.2);
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #9b59b6;
+    font-size: 0.8rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .room {
+        padding: 1rem;
+    }
+    
+    input[type="text"] {
+        width: 100%;
+        margin-bottom: 0.8rem;
+        margin-right: 0;
+    }
+    
+    .room-description p {
+        font-size: 0.8rem;
+    }
+    
+    .books-clue,
+    .paintings-grid,
+    .candles-container,
+    .final-clues {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
+
+/* Hide timer on success page */
+.success-screen ~ header .timer {
+    display: none;
+}
